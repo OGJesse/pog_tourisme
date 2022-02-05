@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Port-Gentil</title>
+</head>
+<body>
+
+    <!-- barre de navigation -->
+
+    <nav>
+        <ul class="liste_nav">
+            <li class="item_nav">
+                <a href="#home">Acceuil</a>
+            </li>
+            <li class="item_nav">
+                <a href="#asym">Que faire ?</a>
+            </li>
+            <li class="item_nav">
+                <a href="#tarifs">Tarifs</a>
+            </li>
+            <li class="item_nav">
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+        <img src="ressources/menu.svg" alt="logo menu" class="logo_menu" >
+    </nav>
+
+    <!-- Acceuil -->
+
+    <div class="acceuil" id="home">
+        <img src="ressources/logo-porte-japon.jpg" alt="logo porte japon" class="logo_kyoto">
+        <h1>Découverte Kyoto</h1>
+        <p class="sous_titre">La ville impériale du japon</p>
+        <a href="#asym" class="btn_acceuil">En savoir plus</a>
+    </div>
+
+    <!-- section asym -->
+
+    <section class="section_asym" id="asym">
+        <h2>Que faire à kyoto</h2>
+
+        <div class="bloc bloc_left bloc_1">
+            <div class="bloc_txt_left">
+                <h3> Visitez des temples </h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, laudantium assumenda officia tenetur quaerat ipsum vero praesentium repudiandae repellat, quod vel molestiae debitis, porro eius voluptate voluptatem quasi aspernatur in sapiente eaque. Perferendis perspiciatis pariatur dolor, eius libero impedit quod ullam debitis animi rerum voluptatem esse rem sed ab accusantium.</p>
+                <button class="btn_bloc_left">En savoir plus</button>
+
+            </div>
+        </div>
+
+        <img src="ressources/kyoto-temple.jpg" alt="chateau de kyoto" class="img_grid img_grid_1">
+
+        <div class="bloc bloc_right bloc_2">
+            <div class="bloc_txt_right">
+                <h3> Visitez des chateaux </h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, laudantium assumenda officia tenetur quaerat ipsum vero praesentium repudiandae repellat, quod vel molestiae debitis, porro eius voluptate voluptatem quasi aspernatur in sapiente eaque. Perferendis perspiciatis pariatur dolor, eius libero impedit quod ullam debitis animi rerum voluptatem esse rem sed ab accusantium.</p>
+                <button>En savoir plus</button>
+
+            </div>
+        </div>
+
+        <img src="ressources/chateau-kyoto.jpg" alt="geisha" class="img_grid img_grid_2">
+
+        <div class="bloc bloc_left bloc_3">
+            <div class="bloc_txt_left">
+                <h3> Visitez des temples </h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, laudantium assumenda officia tenetur quaerat ipsum vero praesentium repudiandae repellat, quod vel molestiae debitis, porro eius voluptate voluptatem quasi aspernatur in sapiente eaque. Perferendis perspiciatis pariatur dolor, eius libero impedit quod ullam debitis animi rerum voluptatem esse rem sed ab accusantium.</p>
+                <button class="btn_bloc_left">En savoir plus</button>
+
+            </div>
+        </div>
+
+        <img src="ressources/geisha.jpg" alt="couloir d'un temple de kyoto" class="img_grid img_grid_3">
+
+        <div class="ligne_gauche"></div>
+        <div class="ligne_droite"></div>
+
+    </section>
+
+    <!-- ::::::::::: parallax ::::::::::::::::::::: -->
+
+    <section class="parallax">
+        <p>OGOULA JESSE</p>
+        <span>Partez à l'aventure</span>
+    </section>
+
+    <!-- Section Contact -->
+
+    <section class="section-contact" id="contact">
+
+        <h2><strong>Rentrons</strong> en contact</h2>
+
+        <div class="container-form">
+
+            <form class="form-bloc">
+
+                <div class="form-groupe">
+                    <label for="prenom">Entrez votre prénom</label>
+                    <input type="text" placeholder="Prénom" required id="prenom">
+                </div>
+
+                <div class="form-groupe">
+                    <label for="nom">Entrez votre nom</label>
+                    <input type="text" placeholder="Prénom" required id="nom">
+                </div>
+
+                <div class="form-groupe">
+                    <textarea  id="txt" placeholder="Votre message" required></textarea>
+                </div>
+
+                <div class="form-groupe">
+                    <input type="submit" value="ENVOYER" class="button-sub">
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <footer>
+        Tous Droits Réservés &copy;
+    </footer>
+
+
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
