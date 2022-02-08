@@ -20,3 +20,18 @@ allLinks.forEach(item => {
         menu.classList.toggle('active')
     })
 })
+
+const btnmodal = document.querySelector('.btn_acceuil');
+const modalview = document.querySelector('.modal-container');
+const close = document.querySelector('.close-modal')
+
+
+btnmodal.addEventListener('click',() => {
+
+    modalview.classList.toggle('active')
+})
+
+close.addEventListener('click',() => {
+
+    modalview.classList.remove('active')
+})

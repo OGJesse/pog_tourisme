@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0100)http://www.enseignement.polytechnique.fr/informatique/profs/Olivier.Serre/Memos/Polices/Polices.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="author" content="Olivier Serre">
+	<meta name="keywords" content="TD, travaux dirigés, modex, php, persistance, get, HTML, design, css, cascading, style, sheets, graphic design, w3c, web standards, visual, display">
+	<meta name="description" content="Persistance.">
+	<meta name="robots" content="all">
+
+	<title>Comment inclure des polices à un projet web?</title>
+
+	<style type="text/css" title="debug">
+		@import "fonts.css";
+	</style>
+</head>
+
+<body>
+
+<div class="titre">Comment inclure des polices à un projet web?</div>
+<div class="sousTitre">PAR OLIVIER SERRE</div>
+
+<h1>Introduction</h1>
+
+<p>
+On va traiter dans ce mémo d'un problème tout bête mais crucial dès lors que l'on
+souhaite développer un site au design agréable&nbsp;: comment utiliser des polices qui ne
+se limitent pas aux traditionnelles Arial, Helvetica, Times et autres…
+</p>
+
+<p>
+Il existe une solution simple grâce au CSS3 en utilisant la règle <tt>@font-face</tt> dont voici la syntaxe:</p>
+
+<pre class="code">@font-face {
+        font-family: &lt;an-arbitrary-font-name&gt;;
+        src: &lt;source&gt; [,&lt;source&gt;]*;
+        [font-weight: &lt;weight&gt;];
+        [font-style: &lt;style&gt;];
+}
+</pre>
+
+<ul>
+    <li><tt>&lt;an-arbitrary-font-name&gt;</tt>: permet de spécifier le nom de la police dans la suite du CSS&nbsp;; peut être choisi librement</li>
+    <li><tt>&lt;source&gt;</tt>: permet de préciser une URL où trouver la police — syntaxe <tt>url("./chemin/fichierPolice")</tt> — et éventuellement spécifier
+    des noms possibles de la police sur la machine de l'utilisateur — syntaxe <tt>local(nomDeLaPolice)</tt>. Dans le cas où
+    l'on précise un ou plusieurs noms locaux, on placera les commandes <tt>local()</tt> avant la commande <tt>url</tt>, le navigateur s'arrêtant
+    une fois une correspondance trouvée (ainsi l'URL ne sera utilisée qu'en dernier ressort).</li>
+    <li><tt>&lt;weight&gt;</tt>: permet de préciser l'épaisseur de la police (typiquement <tt>normal</tt> ou <tt>bold</tt>).</li>
+    <li><tt>&lt;style&gt;</tt>: permet de préciser le style de la police (typiquement <tt>normal</tt> ou <tt>italic</tt>).</li>
+</ul>
+
+<h1>Le B.A.-ba</h1>
+
+<p>Commençons par une exemple simple. Une partie du code CSS de la page web que vous lisez actuellement est le suivant:</p>
+
+<pre class="code">@font-face {
+        font-family: BonvenoCF;
+        src: url("./Fonts/BonvenoCF-Light.otf");
+}
+
+body {
+        padding:20px;
+        background-color:white;
+        color:black;
+        font-family:BonvenoCF;
+}
+</pre>
+
+<p>On commence donc par introduire, grâce à la commande <tt>@font-face</tt>, une nouvelle police, que l'on appelera par la suite
+<tt>BonvenoCF-Light</tt>, et qui se trouve dans le sous répertoire <tt>Fonts</tt> (l'extension <tt>otf</tt> est un acronyme pour
+"opentype font").</p>
+
+<h1>Subtilités</h1>
+
+<h2>Du bon emploi des attributs font-weight et font-style</h2>
+
+<p>Imaginons que vous utilisez la police times (qui ne requiert donc aucunement l'utilisation de la commande <tt>@font-face</tt>). Si vous décidez
+subitement de mettre un mot en gras (avec la balise &lt;b&gt;) ou en italique (avec la balise &lt;i&gt;), ce dernier est correctement mis en forme.</p>
+
+<p>Par contre, dans l'exemple précédent, cela ne marche plus: il n'y a pas de modification de la police! La raison est la suivante: quand on
+ajoutait la police BonvenoCF-Light dans l'exemple précédent, on a en fait seulement inclus sa version droite. Les variantes grasse et italique
+sont donc absentes, ce qui explique que le navigateur ne les trouve pas.</p>
+
+<p>Comment remédier au problème? Il suffit d'utiliser les attributs <tt>font-weight</tt> et <tt>font-style</tt>. Un exemple valant mieux qu'un long
+discours:</p>
+
+<pre class="code">@font-face {
+        font-family: BonvenoCF;
+        src: url("./Fonts/BonvenoCF-Bold.otf");
+        font-weight: bold;
+}
+
+@font-face {
+        font-family: BonvenoCF;
+        src: url("./Fonts/BonvenoCF-Italic.otf");
+        font-style: italic;
+}
+</pre>
+
+<p>On a simplement introduit les variantes de la police (sans changer son nom bien entendu).</p>
+
+<h2>Compatibilité</h2>
+
+<p>Bien qu'implantée par la plupart des navigateurs récents (dernières versions de Firefox, Safari ou Chrome, mais pas IE…), <tt>@font-face</tt> reste une fonctionalité de la spécification 3 du CSS. Il faudra
+donc se prémunir en proposant systématiquement une police alternative. Par exemple:</p>
+
+<pre class="code">body {
+        font-family:BonvenoCF,serif;
+}
+</pre>
+
+<h2>Quels types de police utiliser?</h2>
+
+<p>On pourra utiliser des polices <tt>OpenType</tt> (extension <tt>otf</tt>) ou <tt>TrueType</tt> (extension <tt>ttf</tt>).
+D'autres formats sont également utilisables, mais on prendra garde aux problèmes de compatibilité d'un navigateur à l'autre.</p>
+
+<p>Un autre point important dans le choix de la police est celui relatif aux accents: en effet de nombreuses polices ne
+sont pas prévues pour notre belle langue…</p>
+
+<p>Enfin, on prendra garde, comme toujours lors de l'utilisation de ressources extérieures, aux problèmes de droit.</p>
+
+<h1>Liens utiles</h1>
+
+<p>Quelques liens sur l'emploi de la commande <tt>@font-face</tt></p>
+
+<ul>
+    <li><a href="http://dev.w3.org/csswg/css3-fonts/#the-font-face-rule">L'indispensable page du W3C relative à la commande <tt>@font-face</tt></a>.</li>
+    <li><a href="http://hacks.mozilla.org/2009/06/beautiful-fonts-with-font-face/">Un tutoriel bien fait.</a></li>
+</ul>
+
+<p>Quelques sites permettant de télécharger / acheter des polices utilisables ensuite dans vos sites</p>
+
+<ul>
+    <li><a href="http://typophile.com/node/18207">Polices libres</a></li>
+    <li><a href="http://www.princexml.com/howcome/2008/webfonts/">Exemples</a>
+       dont beaucoup sont fondés sur des polices libres –
+       on consultera les sources css&nbsp;!</li>
+    <li><a href="http://new.myfonts.com/">MyFonts</a></li>
+    <li><a href="http://www.dafont.com/fr/">Dafonts</a></li>
+    <li><a href="http://www.fontsquirrel.com/">Fonts Squirrel</a></li>
+    <li><a href="http://code.google.com/webfonts?subset=latin">Google Font Directory</a></li>
+</ul>
+
+
+
+</body></html>
